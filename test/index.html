@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+<title>Test FonasaPad – Evaluación bariátrica</title>
+
+<link rel="canonical" href="https://fonasapad.cl/test/">
+<meta property="fb:app_id" content="123456789012345"><!-- reemplaza -->
+
+<!-- OG -->
+<meta property="og:url" content="https://fonasapad.cl/test/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Test FonasaPad: ¿Eres candidat@ para cirugía bariátrica?">
+<meta property="og:description" content="Responde en 1 minuto: Edad, IMC, FONASA (tramo), ciudad y cirugías previas. Resultado inmediato.">
+<meta property="og:image" content="https://fonasapad.cl/test/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" type="image/png" href="https://fonasapad.cl/test/favicon.png">
+<meta name="description" content="Responde el test en 1 minuto: edad, IMC, FONASA y cirugías previas para saber si calificas.">
+
+<style>
+  :root{--bg:#0b2a4a;--bg2:#092743;--ac:#1266d7;--accent:#d41445;--soft:#f5f8ff;--ink:#0b1630}
+  *{box-sizing:border-box;font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial;-webkit-tap-highlight-color:transparent}
+  html{font-size:16px}
+  body{margin:0;background:linear-gradient(180deg,var(--bg) 0%,var(--bg2) 100%);}
+  .wrap{max-width:880px;margin:0 auto;padding:calc(12px + env(safe-area-inset-top)) 16px calc(16px + env(safe-area-inset-bottom))}
+  .card{background:#fff;border:1px solid #0d2240;border-radius:14px;box-shadow:0 10px 30px rgba(0,0,0,.25);padding:16px;overflow-wrap:break-word;word-break:break-word}
+  .hero{display:flex;gap:16px;align-items:flex-start;justify-content:space-between;flex-wrap:wrap}
+  .hero h1{font-size:clamp(1.3rem,4.2vw,1.9rem);line-height:1.2;margin:0;color:#0b1630}
+  .badge{display:inline-block;font-weight:700;font-size:.72rem;background:#0f2d52;color:#e8f0ff;padding:6px 10px;border-radius:999px;border:1px solid #244a7a;margin-bottom:10px}
+  .sub{color:#263445;margin-top:8px;font-size:.95rem}
+  .prog{position:sticky;top:0;z-index:5;border:1px solid #e5ecf9;height:10px;background:#eaf1fb;border-radius:999px;overflow:hidden;margin:14px 0}
+  .prog>span{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--ac),var(--accent));transition:width .25s ease}
+  .q{display:none} .q.active{display:block} .q h3{margin:0 0 12px 0;color:#102244;font-size:1.05rem}
+  .grid{display:grid;gap:10px;grid-template-columns:1fr}
+  @media(min-width:640px){.grid.cols-2{grid-template-columns:1fr 1fr}}
+  .opt{display:grid;grid-template-columns:28px 1fr;align-items:center;gap:10px;border:1px solid #e7edf7;padding:12px 14px;border-radius:12px;background:#fff}
+  .opt input[type=radio], .opt input[type=checkbox]{width:20px;height:20px;margin:0;accent-color:var(--ac)}
+  .cta{display:flex;gap:12px;margin-top:16px;flex-direction:column;align-items:stretch;position:relative}
+  button,.btn{appearance:none;border:none;border-radius:12px;padding:12px 18px;font-weight:800;cursor:pointer;letter-spacing:.2px;width:100%;min-height:48px}
+  .primary{background:var(--ac);color:#fff;box-shadow:0 4px 8px rgba(18,102,215,.2)}
+  .ghost{background:#fff;border:1px solid #dfe7f5;color:#14325b}
+  .muted{color:#6b7a90;font-size:.85rem}
+  input,select,textarea{width:100%;padding:12px;border:1px solid #dfe7f5;border-radius:10px;font-size:1rem}
+  textarea{min-height:80px;resize:vertical}
+  .hide{display:none} .ok{color:#0f8a4b;font-weight:800} .err{color:#b00020}
+  .footer{margin-top:20px;color:#b6c7e1;font-size:.78rem;text-align:center}
+  .brand{font-weight:900;color:var(--accent)} .logo{width:min(140px,38vw);height:auto;border-radius:8px;box-shadow:0 6px 16px rgba(0,0,0,.25)}
+  .resumen{margin:6px 0 14px 0;line-height:1.5} .resumen .line{display:block}
+  .sticker-arrow{position:absolute;left:-2px;top:-20px;width:68px;height:68px;pointer-events:none;transform:rotate(-12deg)}
+  @media(min-width:768px){ .cta{flex-direction:row;align-items:center} button,.btn{width:auto;min-width:220px} .logo{width:180px} .wrap{padding:24px} .card{padding:24px}}
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="card">
+      <div class="hero">
+        <div>
+          <span class="badge">1 minuto • Evaluación online</span>
+          <h1>Test de <span class="brand">aptitud bariátrica</span> <b>FonasaPad</b></h1>
+          <p class="sub">Edad, IMC, FONASA (tramo), ciudad y cirugías previas. Resultado inmediato + contacto del equipo.</p>
+        </div>
+        <img alt="FonasaPad" class="logo" src="/test/logo.png" />
+      </div>
+
+      <div class="prog"><span id="bar"></span></div>
+      <div id="stepTxt" class="muted">Paso 1 de 6</div>
+
+      <section class="q active" data-step="1">
+        <h3>¿Cuál es tu rango de edad?</h3>
+        <div class="grid cols-2">
+          <label class="opt"><input type="radio" name="edad" value="18-29"><span>18–29</span></label>
+          <label class="opt"><input type="radio" name="edad" value="30-39"><span>30–39</span></label>
+          <label class="opt"><input type="radio" name="edad" value="40-49"><span>40–49</span></label>
+          <label class="opt"><input type="radio" name="edad" value="50+"><span>50+</span></label>
+        </div>
+        <div class="cta"><button class="primary" data-next>Siguiente</button></div>
+      </section>
+
+      <section class="q" data-step="2">
+        <h3>Calcula tu IMC</h3>
+        <div class="grid cols-2">
+          <div><label>Peso (kg)<br><input id="peso" type="number" inputmode="decimal" min="30" max="350" placeholder="Ej: 108"></label></div>
+          <div><label>Estatura (cm)<br><input id="estatura" type="number" inputmode="numeric" min="120" max="220" placeholder="Ej: 168"></label></div>
+        </div>
+        <p id="imcMsg" class="muted">Calcularemos tu IMC automáticamente (necesitamos peso y estatura).</p>
+        <div class="cta"><button class="ghost" data-prev>Volver</button><button class="primary" id="nextImc" data-next disabled>Siguiente</button></div>
+      </section>
+
+      <section class="q" data-step="3">
+        <h3>¿Tienes FONASA? Indícanos tu tramo</h3>
+        <div class="grid cols-2">
+          <label class="opt"><input type="radio" name="prevision" value="FONASA"><span>FONASA</span></label>
+          <label class="opt"><input type="radio" name="prevision" value="Otra"><span>Otra previsión / No sé</span></label>
+        </div>
+        <div id="tramoWrap" class="grid cols-2 hide" style="margin-top:8px">
+          <label class="opt"><input type="radio" name="tramo" value="A"><span>Tramo A</span></label>
+          <label class="opt"><input type="radio" name="tramo" value="B"><span>Tramo B</span></label>
+          <label class="opt"><input type="radio" name="tramo" value="C"><span>Tramo C</span></label>
+          <label class="opt"><input type="radio" name="tramo" value="D"><span>Tramo D</span></label>
+        </div>
+        <div class="cta"><button class="ghost" data-prev>Volver</button><button class="primary" data-next>Siguiente</button></div>
+      </section>
+
+      <section class="q" data-step="4">
+        <h3>¿En qué ciudad estás?</h3>
+        <div class="grid cols-2">
+          <select id="ciudad">
+            <option value="">Selecciona…</option>
+            <option>Santiago</option><option>Puente Alto</option><option>Ñuñoa</option>
+            <option>Valparaíso</option><option>Concepción</option><option>Antofagasta</option>
+            <option>Otra</option>
+          </select>
+          <input id="whatsapp" type="tel" inputmode="tel" placeholder="WhatsApp (+56 9 …)">
+        </div>
+        <div class="cta"><button class="ghost" data-prev>Volver</button><button class="primary" data-next>Continuar</button></div>
+      </section>
+
+      <section class="q" data-step="5">
+        <h3>¿Has tenido cirugías abdominales o bariátricas previas?</h3>
+        <div class="grid cols-2">
+          <label class="opt"><input type="radio" name="cir_previas" value="No"><span>No</span></label>
+          <label class="opt"><input type="radio" name="cir_previas" value="Sí"><span>Sí</span></label>
+        </div>
+        <div id="detalleCir" class="hide" style="margin-top:8px">
+          <label>Cuéntanos brevemente (opcional):<br><textarea id="cir_detalle" placeholder="Ej: manga 2019, cesárea 2015"></textarea></label>
+        </div>
+        <div class="cta"><button class="ghost" data-prev>Volver</button><button class="primary" data-next>Siguiente</button></div>
+      </section>
+
+      <section class="q" data-step="6">
+        <h3>Último paso: contacto</h3>
+        <div class="grid cols-2">
+          <input id="nombre" placeholder="Nombre y apellido">
+          <input id="email" type="email" placeholder="Email">
+        </div>
+        <label class="opt" style="margin-top:8px">
+          <input id="consent" type="checkbox"><span>Acepto ser contactad@ por FonasaPad y su política de privacidad.</span>
+        </label>
+        <div id="err" class="err hide">Revisa que los datos estén completos/correctos.</div>
+        <div class="cta"><button class="ghost" data-prev>Volver</button><button class="primary" id="enviar">Obtener resultado</button></div>
+        <p class="muted">Protegemos tus datos. Puedes solicitar eliminación en cualquier momento.</p>
+      </section>
+
+      <section class="q" data-step="done">
+        <h3>¡Gracias! 🎉</h3>
+        <p id="resultadoTitulo" class="ok"></p>
+        <div id="resumen" class="resumen"></div>
+        <div class="cta">
+          <svg class="sticker-arrow" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <defs><filter id="shadow" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="4" stdDeviation="4" flood-color="#092743" flood-opacity=".35"/></filter></defs>
+            <g filter="url(#shadow)"><path d="M85 20c-10 20-18 30-30 40 16 0 26 2 44 8-6 6-15 12-26 16-9 3-20 5-29 6l7 14-40-20 34-31-2 12c12-5 28-17 42-45z" fill="#d41445"/></g>
+          </svg>
+          <a id="ctaWhats" class="btn primary" target="_blank" rel="noopener">Ir a WhatsApp</a>
+          <a id="ctaSitio" class="btn ghost" href="https://www.fonasapad.cl" target="_blank" rel="noopener">Ir al sitio</a>
+        </div>
+        <p class="muted">Recibirás confirmación por WhatsApp/Email con la preparación de la evaluación.</p>
+      </section>
+
+      <div class="footer">©2025 FonasaPad · Información orientativa, no reemplaza evaluación médica. Sujeto a criterios clínicos y cobertura vigente.</div>
+    </div>
+  </div>
+
+<script>
+// JS igual que la versión anterior
+(function(){
+  const params = new URLSearchParams(location.search);
+  const UTM_KEYS = ['utm_source','utm_medium','utm_campaign','utm_content','utm_term','ttclid'];
+  const utm = {}; UTM_KEYS.forEach(k=>{ if(params.get(k)) utm[k]=params.get(k); });
+  localStorage.setItem('utm', JSON.stringify(utm));
+
+  const steps = Array.from(document.querySelectorAll('.q')); let step = 1, max = 6;
+  const bar = document.getElementById('bar'); const stepTxt = document.getElementById('stepTxt');
+  function showStep(n){ steps.forEach(s=>s.classList.remove('active')); document.querySelector(`.q[data-step="${n}"]`)?.classList.add('active'); const pct = Math.round((n-1)/max*100); bar.style.width = pct + '%'; stepTxt.textContent = `Paso ${n} de ${max}`; }
+  const go = (d)=>{ if(d===1 && !validate(step)) return; step = Math.min(max, Math.max(1, step + d)); showStep(step); };
+  document.querySelectorAll('[data-next]').forEach(b=>b.addEventListener('click',()=>go(1)));
+  document.querySelectorAll('[data-prev]').forEach(b=>b.addEventListener('click',()=>go(-1)));
+
+  const data = {};
+  document.querySelectorAll('input[name="edad"]').forEach(r=>r.addEventListener('change',e=>data.edad=e.target.value));
+
+  const peso = document.getElementById('peso'), est = document.getElementById('estatura'), nextImc = document.getElementById('nextImc'), imcMsg = document.getElementById('imcMsg');
+  function calcIMC(){
+    const p = parseFloat(peso.value||0), e = parseFloat(est.value||0)/100;
+    if(p>0 && e>0){ const imc = (p/(e*e)).toFixed(1); let rango = (imc>=30)?'obesidad':(imc>=25)?'sobrepeso':'normal'; imcMsg.innerHTML = `Tu IMC estimado es <b>${imc}</b> (${rango}).`; nextImc.disabled=false; data.imc = imc; }
+    else{ imcMsg.textContent = 'Calcularemos tu IMC automáticamente (necesitamos peso y estatura).'; nextImc.disabled=true; }
+  } [peso,est].forEach(i=>i.addEventListener('input',calcIMC));
+
+  const tramoWrap = document.getElementById('tramoWrap');
+  document.querySelectorAll('input[name="prevision"]').forEach(r=>r.addEventListener('change',e=>{ data.prevision=e.target.value; if(e.target.value==='FONASA') tramoWrap.classList.remove('hide'); else { tramoWrap.classList.add('hide'); data.tramo=null; document.querySelectorAll('input[name="tramo"]').forEach(t=>t.checked=false); } }));
+  document.querySelectorAll('input[name="tramo"]').forEach(t=>t.addEventListener('change',e=>data.tramo=e.target.value));
+
+  const ciudad = document.getElementById('ciudad'), whatsapp = document.getElementById('whatsapp');
+  ciudad.addEventListener('change',()=>data.ciudad=ciudad.value); whatsapp.addEventListener('input',()=>data.whatsapp=whatsapp.value);
+
+  const detalleCir = document.getElementById('detalleCir'), cirDet = document.getElementById('cir_detalle');
+  document.querySelectorAll('input[name="cir_previas"]').forEach(r=>r.addEventListener('change',e=>{ data.cir_previas=e.target.value; if(e.target.value==='Sí') detalleCir.classList.remove('hide'); else { detalleCir.classList.add('hide'); cirDet.value=''; data.cir_detalle=''; } }));
+  cirDet.addEventListener('input',()=>data.cir_detalle=cirDet.value);
+
+  const nombre = document.getElementById('nombre'), email = document.getElementById('email'), consent = document.getElementById('consent'), err = document.getElementById('err');
+  const validPhone = v=>/^\+?[\d\s()-]{9,}$/.test(v||''), validEmail = v=>/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v||'');
+  const showErr = msg=>{ err.textContent=msg; err.classList.remove('hide'); setTimeout(()=>err.classList.add('hide'),2500); };
+
+  function validate(s){
+    if(s===1 && !data.edad){ showErr('Selecciona tu rango de edad.'); return false; }
+    if(s===2 && !data.imc){ showErr('Ingresa peso y estatura para calcular IMC.'); return false; }
+    if(s===3){ if(!data.prevision){ showErr('Indica si tienes FONASA u otra previsión.'); return false; } if(data.prevision==='FONASA' && !data.tramo){ showErr('Selecciona tu tramo FONASA (A/B/C/D).'); return false; } }
+    if(s===4){ if(!ciudad.value){ showErr('Selecciona tu ciudad.'); return false; } if(!validPhone(whatsapp.value)){ showErr('Ingresa un WhatsApp válido.'); return false; } }
+    if(s===5 && !data.cir_previas){ showErr('Indica si has tenido cirugías previas.'); return false; }
+    return true;
+  }
+
+  document.getElementById('enviar').addEventListener('click', async ()=>{
+    if(!nombre.value || !validEmail(email.value) || !consent.checked){ showErr('Revisa nombre, email y consentimiento.'); return; }
+    data.nombre = nombre.value.trim(); data.email = email.value.trim(); data.whatsapp = whatsapp.value.trim(); data.ciudad = ciudad.value;
+    data.timestamp = new Date().toISOString(); data.source = 'quiz_bariatrico_fonasapad'; data.utm = JSON.parse(localStorage.getItem('utm')||'{}');
+
+    try{ const WEBHOOK_URL = "https://hooks.zapier.com/hooks/catch/0000000/aaaaaaaa/"; await fetch(WEBHOOK_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)}); }catch(e){ console.warn('No se pudo enviar al webhook', e); }
+
+    window.dataLayer = window.dataLayer || []; window.dataLayer.push({ event:'lead', lead_source:'quiz_bariatrico_fonasapad' });
+
+    document.querySelectorAll('.q').forEach(s=>s.classList.remove('active')); const done = document.querySelector('.q[data-step="done"]'); done.classList.add('active'); document.getElementById('stepTxt').textContent='Completado'; document.getElementById('bar').style.width='100%';
+    const firstName = (data.nombre.split(' ')[0]||'').replace(/[^A-Za-zÁÉÍÓÚÜÑáéíóúüñ-]/g,''); 
+    document.getElementById('resultadoTitulo').innerHTML = `<b>${firstName}</b>, eres <b>potencial candidat@</b> según tu IMC y antecedentes. <b>Contacta a nuestro equipo:</b>`;
+    const cirTxt = data.cir_previas==='Sí' ? (data.cir_detalle ? `Cirugías previas: ${data.cir_detalle}.` : 'Con cirugías previas.') : 'Sin cirugías previas.';
+    const tramoTxt = data.prevision==='FONASA' ? `, Tramo: ${data.tramo||'N/A'}.` : '.';
+    document.getElementById('resumen').innerHTML = [
+      `Nombre: ${data.nombre}.`,`Edad: ${data.edad}.`,`IMC: ${data.imc}.`,`Previsión: ${data.prevision}${tramoTxt}`,
+      `Ciudad: ${data.ciudad}.`,cirTxt,'Quiero coordinar evaluación <b>SIN COSTO</b> (válido para paciente Fonasa).'
+    ].map(t=>`<span class="line">${t}</span>`).join('');
+
+    const msg = encodeURIComponent(`Hola, soy ${data.nombre}. Hice el test FonasaPad. Edad: ${data.edad}. IMC: ${data.imc}. Previsión: ${data.prevision}${data.prevision==='FONASA' ? ' Tramo: '+(data.tramo||'N/A') : ''}. Ciudad: ${data.ciudad}. ${cirTxt} Quiero coordinar evaluación SIN COSTO (válido para paciente Fonasa).`);
+    const WHATSAPP_PHONE = '56953386191';
+    document.getElementById('ctaWhats').href = `https://wa.me/${WHATSAPP_PHONE}?text=${msg}`;
+  });
+
+  showStep(step);
+})();
+</script>
+</body>
+</html>
