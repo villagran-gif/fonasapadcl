@@ -29,9 +29,9 @@ const Team = () => {
       imageUrl: "../assets/Cristobal Guixe.webp"
     },
     {
-      name: "Dr. Nasser Eluzen",
+      name: "",
       role: "Cirujano Bariátrico",
-      imageUrl: "../assets/Nasser Eluzem.webp"
+      imageUrl: ""
     },
     {
       name: "Dr. Andrés San Martín",
