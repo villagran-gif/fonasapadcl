@@ -9,7 +9,7 @@ const Team = () => {
       imageUrl: "../assets/Ramon Diaz.webp"
     },
     {
-      name: "Dr. Emilio Morales",
+      name: "Dr. Nelson Aros",
       role: "Cirujano Bariátrico",
       imageUrl: "../assets/Emilio Morales.webp"
     },
