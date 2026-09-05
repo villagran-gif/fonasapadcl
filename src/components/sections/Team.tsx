@@ -6,37 +6,33 @@ const Team = () => {
     {
       name: "Dr. Ramón Díaz",
       role: "Cirujano Bariátrico",
-      imageUrl: "../assets/Ramon Diaz.webp"
+      imageUrl: "/assets/Ramon Diaz.webp"
     },
     {
       name: "Dr. Nelson Aros",
       role: "Cirujano Bariátrico",
-      imageUrl: "../assets/Nelson Aros.webp"
+      imageUrl: "/assets/nelson aros.webp"
     },
     {
-      name: "Dr. Rodrigo Villagrán",
-      role: "Cirujano Bariátrico",
-      imageUrl: "../assets/Rodrigo Villagran.webp"
+      name: "Dr. Rodrigo Villagrán Morales",
+      role: "Cirugía bariátrica y metabólica",
+      imageUrl: "/assets/rodrigo villagran.webp",
+      profileUrl: "https://clinyco.cl/doctor-rodrigo-villagran/"
     },
      {
       name: "Dr. Alberto Sirabo",
       role: "Cirujano Bariátrico",
-      imageUrl: "../assets/Alberto Sirabo.webp"
+      imageUrl: "/Alberto Sirabo.webp"
     },
     {
       name: "Dr. Cristobal Guixé",
       role: "Cirujano Bariátrico",
-      imageUrl: "../assets/Cristobal Guixe.webp"
-    },
-    {
-      name: "",
-      role: "Cirujano Bariátrico",
-      imageUrl: ""
+      imageUrl: "/assets/Cristobal Guixe.webp"
     },
     {
       name: "Dr. Andrés San Martín",
       role: "Cirujano Bariátrico",
-      imageUrl: "../assets/Andres San Martin.webp"
+      imageUrl: "/assets/Andres San Martin.webp"
     }
   ];
 
@@ -52,6 +48,7 @@ const Team = () => {
               name={member.name}
               role={member.role}
               imageUrl={member.imageUrl}
+              profileUrl={'profileUrl' in member ? member.profileUrl : undefined}
             />
           ))}
         </div>

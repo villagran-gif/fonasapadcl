@@ -19,7 +19,7 @@ const AboutPad = () => {
               </div>
               <div>
                 <h4 className="text-lg font-semibold mb-2">Cobertura integral</h4>
-                <p className="text-gray-300">Incluye consultas, exámenes, procedimientos, cirugía y controles posteriores.</p>
+                <p className="text-gray-300">Cada PAD define un paquete de prestaciones incluidas. En cirugía bariátrica, la cobertura contempla la cirugía y el seguimiento establecido por la normativa vigente.</p>
               </div>
             </div>
             
@@ -29,7 +29,7 @@ const AboutPad = () => {
               </div>
               <div>
                 <h4 className="text-lg font-semibold mb-2">Tiempo definido</h4>
-                <p className="text-gray-300">La atención tiene un plazo definido desde el diagnóstico hasta la resolución.</p>
+                <p className="text-gray-300">La cobertura y el seguimiento se rigen por las condiciones específicas de cada prestación PAD.</p>
               </div>
             </div>
             
@@ -39,7 +39,7 @@ const AboutPad = () => {
               </div>
               <div>
                 <h4 className="text-lg font-semibold mb-2">Costo conocido</h4>
-                <p className="text-gray-300">Sabes exactamente cuánto pagarás, sin sorpresas ni cobros adicionales.</p>
+                <p className="text-gray-300">El PAD permite conocer previamente el valor de la prestación y el copago informado para el beneficiario.</p>
               </div>
             </div>
             
@@ -48,8 +48,8 @@ const AboutPad = () => {
                 <HeartPulse className="text-accent" size={24} />
               </div>
               <div>
-                <h4 className="text-lg font-semibold mb-2">Calidad garantizada</h4>
-                <p className="text-gray-300">Atención en centros acreditados con estándares de calidad y seguridad.</p>
+                <h4 className="text-lg font-semibold mb-2">Prestadores en convenio</h4>
+                <p className="text-gray-300">La prestación debe realizarse con prestadores e instituciones habilitados para el PAD correspondiente.</p>
               </div>
             </div>
           </div>

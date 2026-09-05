@@ -2,10 +2,41 @@
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="assets\logo_fonasa_pad.png" />
+    <link rel="icon" type="image/png" href="/assets/logo_fonasa_pad.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>FONASA PAD - Clynico | Cirugía Bariátrica</title>
-    <meta name="description" content="Accede a tu cirugía bariátrica con cobertura FONASA PAD. Soluciones en salud con cobertura total, respaldo profesional y humano en Clínyco." />
+    <title>Bono PAD Cirugía Bariátrica | FONASAPAD.cl</title>
+    <meta name="description" content="Información privada sobre Bono PAD para cirugía bariátrica: manga gástrica, bypass gástrico, requisitos, copagos y evaluación médica." />
+    <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1" />
+    <link rel="canonical" href="https://fonasapad.cl/" />
+    <meta property="og:locale" content="es_CL" />
+    <meta property="og:site_name" content="FONASAPAD.cl" />
+    <script>
+      (function () {
+        const path = window.location.pathname.replace(/\/$/, '') || '/';
+        const routes = {
+          '/': {
+            title: 'Bono PAD Cirugía Bariátrica 2026 | FONASAPAD.cl',
+            description: 'Información privada sobre Bono PAD 2026 para manga gástrica y bypass gástrico: requisitos, copagos, criterios de acceso y orientación clínica.'
+          },
+          '/cirugia-bariatrica': {
+            title: 'Cirugía Bariátrica con Bono PAD 2026 | Manga y Bypass',
+            description: 'Guía sobre cirugía bariátrica con Bono PAD 2026: manga gástrica, bypass gástrico, requisitos, copagos, seguimiento y criterios de acceso.'
+          },
+          '/abdominoplastia-bono-pad': {
+            title: 'Abdominoplastía con Bono PAD 2026 | Abdomen Flácido',
+            description: 'Información sobre Bono PAD para abdomen flácido y abdominoplastía: requisitos, copago 2026, criterios de exclusión y orientación para pacientes Fonasa.'
+          }
+        };
+        const data = routes[path];
+        if (data) {
+          document.title = data.title;
+          const description = document.querySelector('meta[name="description"]');
+          if (description) description.setAttribute('content', data.description);
+          const canonical = document.querySelector('link[rel="canonical"]');
+          if (canonical) canonical.setAttribute('href', 'https://fonasapad.cl' + (path === '/' ? '/' : path));
+        }
+      })();
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">

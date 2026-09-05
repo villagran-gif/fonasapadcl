@@ -24,7 +24,7 @@ const Footer = () => {
   </div>
 </a>
             <p className="text-gray-300 mb-4">
-              Soluciones en salud con cobertura total, respaldo profesional y humano.
+              Información y orientación sobre prestaciones con Bono PAD y atención privada en convenio.
             </p>
             <div className="flex space-x-4">
               <a 
@@ -63,15 +63,17 @@ const Footer = () => {
           <div>
             <h4 className="text-lg font-semibold mb-4">Enlaces Rápidos</h4>
             <ul className="space-y-2">
-              <li><a href="#" className="text-gray-300 hover:text-accent transition-colors">Inicio</a></li>
-              <li><a href="#about-pad" className="text-gray-300 hover:text-accent transition-colors">Bono PAD</a></li>
-              <li><a href="#surgery-types" className="text-gray-300 hover:text-accent transition-colors">Tipos de Cirugía</a></li>
-              <li><a href="#locations" className="text-gray-300 hover:text-accent transition-colors">Ubicaciones</a></li>
+              <li><a href="/" className="text-gray-300 hover:text-accent transition-colors">Inicio</a></li>
+              <li><a href="/#about-pad" className="text-gray-300 hover:text-accent transition-colors">Bono PAD</a></li>
+              <li><a href="/#surgery-types" className="text-gray-300 hover:text-accent transition-colors">Tipos de Cirugía</a></li>
+              <li><a href="/#locations" className="text-gray-300 hover:text-accent transition-colors">Ubicaciones</a></li>
             </ul>
           </div>
         </div>
         
         <div className="border-t border-primary-800 pt-6 text-center text-gray-400 text-sm">
+          <p className="mb-2"><strong>FONASAPAD.cl es un portal informativo privado.</strong> No es un sitio oficial de FONASA ni representa al Fondo Nacional de Salud.</p>
+          <p className="mb-2">Los requisitos, coberturas y aranceles pueden cambiar. Confirma siempre la información vigente con FONASA y con el prestador en convenio antes de comprar un bono.</p>
           <p>© {currentYear} Clínyco. Todos los derechos reservados.</p>
         </div>
       </div>

@@ -1,4 +1,5 @@
 import React from 'react';
+import { FONASA_YEAR, abdominoplastyPad, formatCLP } from '../data/fonasa2026';
 
 const Abdominoplasty = () => {
   return (
@@ -7,18 +8,18 @@ const Abdominoplasty = () => {
         <div className="flex flex-col md:flex-row items-center md:items-start gap-6 mb-10 py-20">
           <img src="/assets/abdomenicon.png" alt="Abdominoplastía"  className="w-24 h-24 md:w-32 md:h-32 filter brightness-0 invert" />
           <div>
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-accent">
-              ¿Qué es la Abdominoplastía con Bono PAD?
-            </h2>
+            <h1 className="text-3xl md:text-4xl font-bold mb-4 text-accent">
+              Abdominoplastía con Bono PAD {FONASA_YEAR}: abdomen flácido
+            </h1>
             <p className="text-gray-200 leading-relaxed">
-              La <strong>abdominoplastía</strong> es una <strong>cirugía reconstructiva</strong> indicada para personas que presentan <strong>abdomen flácido</strong>, también conocido como <strong>“guatita de delantal”</strong>. Gracias al <span className="text-blue-400 font-semibold">Bono PAD de Fonasa</span>, este procedimiento está cubierto parcialmente y permite acceder a medicina privada a un <strong>precio fijo, preestablecido y sin sorpresas</strong>.
+              La <strong>abdominoplastía</strong> es una <strong>cirugía reconstructiva</strong> indicada para personas que presentan <strong>abdomen flácido</strong>, también conocido como <strong>“guatita de delantal”</strong>. Gracias al <span className="text-blue-400 font-semibold">Bono PAD de Fonasa</span>, este procedimiento está cubierto parcialmente y permite acceder a una prestación con <strong>valor y copago definidos por el arancel PAD vigente</strong>.
             </p>
           </div>
         </div>
 
         <section className="mb-12 bg-blue-950/50 rounded-xl">
           <p>
-            Gracias al <strong>Bono PAD de Fonasa</strong>, este procedimiento está cubierto parcialmente, permitiendo acceder a medicina privada a un <strong>precio fijo, preestablecido y sin sorpresas</strong>.
+            Gracias al <strong>Bono PAD de Fonasa</strong>, este procedimiento está cubierto parcialmente, permitiendo conocer previamente el <strong>valor y copago informados para la prestación PAD</strong>.
           </p>
         </section>
 
@@ -40,7 +41,7 @@ const Abdominoplasty = () => {
         <section className="mb-12">
           <h3 className="text-xl font-bold text-accent mb-4">¿Qué es el "abdomen flácido"?</h3>
           <p className="mb-2">
-            <strong>Código Fonasa: 2505950</strong><br />
+            <strong>Código Fonasa: {abdominoplastyPad.code}</strong><br />
             “Abdomen flácido” es una condición médica en la que se presenta un exceso de grasa y piel en la parte inferior del abdomen, lo que provoca que esta zona pierda su firmeza y elasticidad, colgando sobre el pubis de forma similar a un delantal.
           </p>
           <p className="mb-2">Esta situación puede deberse a diversos factores como:</p>
@@ -66,7 +67,7 @@ const Abdominoplasty = () => {
         <section className="mb-12">
           <h3 className="text-xl font-bold text-accent mb-4">Cobertura y beneficios</h3>
           <ul className="list-disc list-inside space-y-2">
-            <li>Valor fijo y transparente: sin costos adicionales ni sorpresas</li>
+            <li>Valor y copago informados previamente según el arancel PAD vigente</li>
             <li>Incluye hospitalización, medicamentos y controles postoperatorios por 15 días</li>
             <li>Cubre exámenes, insumos, equipo médico completo y pabellón</li>
             <li>Atención en clínicas privadas con convenio Fonasa</li>
@@ -75,9 +76,10 @@ const Abdominoplasty = () => {
 
         <section className="mb-12">
           <h3 className="text-xl font-bold text-accent mb-4">Valores Fonasa PAD</h3>
-          <p><strong>Total:</strong> $3.583.580</p>
-          <p><strong>Copago:</strong> $1.791.790</p>
-          <p><strong>Préstamo 85%:</strong> $1.523.020</p>
+          <p><strong>Arancel total {FONASA_YEAR}:</strong> {formatCLP(abdominoplastyPad.total)}</p>
+          <p><strong>Copago:</strong> {formatCLP(abdominoplastyPad.copay)}</p>
+          <p><strong>Préstamo 85%:</strong> {formatCLP(abdominoplastyPad.loan85)}</p>
+          <p className="text-sm text-gray-300 mt-3">Confirma siempre la vigencia de valores y requisitos con Fonasa y con el prestador antes de emitir el bono.</p>
         </section>
 
         <section className="mb-12">

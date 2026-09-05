@@ -1,4 +1,5 @@
 import React from 'react';
+import { FONASA_YEAR, bariatricPad, formatCLP } from '../data/fonasa2026';
 interface ArancelCardProps {
   title: string;
   code: string;
@@ -113,7 +114,7 @@ const BariatricSurgery = () => {
             <div className="text-gray-300 space-y-4">
               <p>Para acceder al bono PAD de cirugía bariátrica debes contar con un informe médico emitido por un especialista que confirme que cumples con los requisitos para someterte a manga gástrica o bypass gástrico.</p>
               <p>Recomendamos ingresar a un programa contra la obesidad con equipo multidisciplinario (nutriólogo, nutricionista, psicólogo, kinesiólogo y cirujano). Ellos evaluarán tu caso y entregarán el pase médico.</p>
-              <p>Luego, deberás verificar qué institución trabaja con Fonasa y agendar directamente con su cirujano. Con la orden médica y el código 2501058 se emite el bono PAD en una sucursal Fonasa. Si deseas, puedes solicitar el préstamo para cubrir el 85% del copago.</p>
+              <p>Luego, deberás verificar qué institución se encuentra habilitada para el PAD correspondiente y confirmar la documentación vigente. Los códigos son {bariatricPad.bypass.code} para bypass gástrico y {bariatricPad.sleeve.code} para manga gástrica.</p>
             </div>
           </section>
           <section>
@@ -189,25 +190,26 @@ const BariatricSurgery = () => {
 
           {/* Aranceles */}
           <section>
-            <h3 className="text-2xl font-semibold mb-6">Aranceles 2025 FONASA PAD</h3>
+            <h3 className="text-2xl font-semibold mb-6">Aranceles {FONASA_YEAR} FONASA PAD</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <ArancelCard
-                title="Manga Gástrica"
-                code="2501059"
-                total={4667700}
-                copago={2333850}
-                prestamo={1983770}
-                pie={350078}
+                title={bariatricPad.sleeve.name}
+                code={bariatricPad.sleeve.code}
+                total={bariatricPad.sleeve.total}
+                copago={bariatricPad.sleeve.copay}
+                prestamo={bariatricPad.sleeve.loan85}
+                pie={bariatricPad.sleeve.downPayment15}
               />
               <ArancelCard
-                title="Bypass Gástrico"
-                code="2501058"
-                total={4993380}
-                copago={2496690}
-                prestamo={2122190}
-                pie={374504}
+                title={bariatricPad.bypass.name}
+                code={bariatricPad.bypass.code}
+                total={bariatricPad.bypass.total}
+                copago={bariatricPad.bypass.copay}
+                prestamo={bariatricPad.bypass.loan85}
+                pie={bariatricPad.bypass.downPayment15}
               />
             </div>
+            <p className="text-xs text-gray-400 mt-4">Valores referenciales del arancel PAD/MLE {FONASA_YEAR}. Verifica la vigencia directamente con Fonasa y con la institución en convenio antes de emitir el bono.</p>
           </section>
           
           {/* Preguntas frecuentes */}
@@ -216,19 +218,19 @@ const BariatricSurgery = () => {
             <div className="space-y-4">
               <details className="bg-primary-800 rounded p-4">
                 <summary className="cursor-pointer font-semibold">¿Cuánto sale el bono PAD para cirugía bariátrica?</summary>
-                <p className="mt-2 text-gray-300">El valor del bono depende del procedimiento: Bypass gástrico cuesta $5.737.280 con copago de $2.868.640; la manga gástrica tiene un valor de $5.224.540 con copago de $2.612.270.</p>
+                <p className="mt-2 text-gray-300">En {FONASA_YEAR}, el copago publicado para bypass gástrico es {formatCLP(bariatricPad.bypass.copay)} y para manga gástrica es {formatCLP(bariatricPad.sleeve.copay)}. Confirma siempre el valor vigente antes de comprar el bono.</p>
               </details>
               <details className="bg-primary-800 rounded p-4">
                 <summary className="cursor-pointer font-semibold">¿Cómo acceder al bono PAD para cirugía bariátrica?</summary>
-                <p className="mt-2 text-gray-300">Requiere presentación de un informe médico que indique que cumples con los requisitos establecidos por Fonasa. Esto lo entrega el equipo multidisciplinario tras evaluación.</p>
+                <p className="mt-2 text-gray-300">Debes cumplir los criterios clínicos y administrativos vigentes de Fonasa, contar con la evaluación requerida y realizar la prestación con un prestador habilitado para el PAD correspondiente.</p>
               </details>
               <details className="bg-primary-800 rounded p-4">
                 <summary className="cursor-pointer font-semibold">¿Qué se necesita para comprar el bono PAD cirugía bariátrica?</summary>
-                <p className="mt-2 text-gray-300">Debes ir a una sucursal de Fonasa con tu orden médica, pagar el valor del bono y, si corresponde, solicitar el préstamo médico que cubre el 85% del copago.</p>
+                <p className="mt-2 text-gray-300">La documentación exigida puede incluir orden médica y antecedentes clínicos del programa bariátrico. Confirma la documentación vigente directamente con Fonasa y con el prestador.</p>
               </details>
               <details className="bg-primary-800 rounded p-4">
                 <summary className="cursor-pointer font-semibold">¿El bono PAD cirugía bariátrica se puede pagar en cuotas?</summary>
-                <p className="mt-2 text-gray-300">Sí, si solicitas el préstamo Fonasa. Este cubre el 85% del valor del bono y el 15% se paga al contado. El resto en cuotas que no superen el 10% de tus ingresos.</p>
+                <p className="mt-2 text-gray-300">Fonasa contempla mecanismos de préstamo médico bajo determinadas condiciones. La elegibilidad, porcentaje financiado y modalidad de pago deben verificarse al momento de la solicitud.</p>
               </details>
             </div>
           </section>

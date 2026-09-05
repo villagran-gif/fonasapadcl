@@ -33,7 +33,7 @@ const Header = () => {
         <nav className="hidden md:flex space-x-6">
           <a href="/" className="nav-link">Inicio</a>
           <a href="/cirugia-bariatrica" className="nav-link">Cirugía Bariátrica</a>
-          <a href="/cirugia-metabolica" className="nav-link">Cirugía Abdominoplastía</a>
+          <a href="/abdominoplastia-bono-pad" className="nav-link">Abdominoplastía Bono PAD</a>
           <a href="/#about-pad" className="nav-link">Bono PAD</a>
           <a href="/#contact" className="nav-link">Contacto</a>
           <a href="/#locations" className="nav-link">Ubicación</a>
@@ -67,11 +67,11 @@ const Header = () => {
               Cirugía Bariátrica
             </a>
             <a 
-              href="/cirugia-metabolica" 
+              href="/abdominoplastia-bono-pad" 
               className="block py-2 px-4 hover:bg-primary-800 rounded"
               onClick={() => setIsMobileMenuOpen(false)}
             >
-              Cirugía Abdominoplastía
+              Abdominoplastía Bono PAD
             </a>
             <a 
               href="/#about-pad" 

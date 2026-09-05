@@ -9,7 +9,7 @@ const Hero = () => {
             Accede a tu Cirugía con <span className="text-accent">FONASA PAD</span>
           </h1>
           <p className="text-xl md:text-2xl text-gray-300 mb-10 animate-slide-up">
-            Soluciones en salud con cobertura total, respaldo profesional y humano
+            Información y orientación para acceder a prestaciones con Bono PAD, evaluación profesional y acompañamiento clínico
           </p>
           <p className="text-l md:text-2xl mb-10 animate-slide-up text-accent">
             Santiago - Antofagasta - Calama

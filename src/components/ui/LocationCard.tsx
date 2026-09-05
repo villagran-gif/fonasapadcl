@@ -33,7 +33,7 @@ const LocationCard: React.FC<LocationCardProps> = ({ city, address, mapUrl }) =>
       
       <div className="flex items-center">
         <Phone size={18} className="text-accent mr-2" />
-        <p>+56 2 2222 3333</p>
+        <p>+56 2 2840 0740</p>
       </div>
       
       <div className="mt-4 pt-4 border-t border-primary-800">

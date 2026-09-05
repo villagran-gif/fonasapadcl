@@ -12,10 +12,10 @@ const SurgeryTypes = () => {
             title="Manga Gástrica"
             description="Procedimiento quirúrgico que reduce el tamaño del estómago, limitando la ingesta de alimentos y generando cambios hormonales que disminuyen el apetito."
             benefits={[
-              "Pérdida de peso significativa y sostenida",
-              "Mejora de condiciones médicas asociadas",
+              "Puede favorecer una pérdida de peso clínicamente relevante",
+              "Puede mejorar comorbilidades asociadas a la obesidad",
               "Recuperación relativamente rápida",
-              "No altera la absorción de nutrientes"
+              "Requiere seguimiento nutricional y médico"
             ]}
             iconType="manga"
           />
@@ -24,9 +24,9 @@ const SurgeryTypes = () => {
             title="Bypass Gástrico"
             description="Procedimiento que reduce el tamaño del estómago y altera el proceso digestivo, limitando la absorción de calorías y nutrientes."
             benefits={[
-              "Mayor pérdida de peso a largo plazo",
-              "Efectivo para diabetes tipo 2",
-              "Menor probabilidad de recuperar peso",
+              "Puede lograr una pérdida de peso importante a largo plazo",
+              "Puede contribuir al control o remisión de diabetes tipo 2",
+              "Puede ser una alternativa en casos seleccionados de reflujo o cirugía revisional",
               "Resultados duraderos con seguimiento adecuado"
             ]}
             iconType="bypass"

@@ -1,1 +1,5 @@
-/*    /index.html   200
+/cirugia-metabolica                 /abdominoplastia-bono-pad 301
+/cirugia-bariatrica                 /index.html 200
+/abdominoplastia-bono-pad           /index.html 200
+/                                    /index.html 200
+/*                                   /404.html 404
