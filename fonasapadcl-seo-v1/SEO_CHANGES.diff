@@ -1,0 +1,764 @@
+Only in /mnt/data/fonasapadcl-seo-v1: AUDITORIA_SEO_FONASAPAD_2026.md
+Only in /mnt/data/fonasapadcl-seo-v1: DEPLOY_NETLIFY.md
+diff -ru '--exclude=node_modules' '--exclude=SEO_CHANGES.diff' /mnt/data/fonasapadcl-main/index.html /mnt/data/fonasapadcl-seo-v1/index.html
+--- /mnt/data/fonasapadcl-main/index.html	2026-09-05 22:06:02.746245290 +0000
++++ /mnt/data/fonasapadcl-seo-v1/index.html	2026-09-05 22:13:34.134218563 +0000
+@@ -2,10 +2,41 @@
+ <html lang="es">
+   <head>
+     <meta charset="UTF-8" />
+-    <link rel="icon" type="image/svg+xml" href="assets\logo_fonasa_pad.png" />
++    <link rel="icon" type="image/png" href="/assets/logo_fonasa_pad.png" />
+     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+-    <title>FONASA PAD - Clynico | Cirugía Bariátrica</title>
+-    <meta name="description" content="Accede a tu cirugía bariátrica con cobertura FONASA PAD. Soluciones en salud con cobertura total, respaldo profesional y humano en Clínyco." />
++    <title>Bono PAD Cirugía Bariátrica | FONASAPAD.cl</title>
++    <meta name="description" content="Información privada sobre Bono PAD para cirugía bariátrica: manga gástrica, bypass gástrico, requisitos, copagos y evaluación médica." />
++    <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1" />
++    <link rel="canonical" href="https://fonasapad.cl/" />
++    <meta property="og:locale" content="es_CL" />
++    <meta property="og:site_name" content="FONASAPAD.cl" />
++    <script>
++      (function () {
++        const path = window.location.pathname.replace(/\/$/, '') || '/';
++        const routes = {
++          '/': {
++            title: 'Bono PAD Cirugía Bariátrica 2026 | FONASAPAD.cl',
++            description: 'Información privada sobre Bono PAD 2026 para manga gástrica y bypass gástrico: requisitos, copagos, criterios de acceso y orientación clínica.'
++          },
++          '/cirugia-bariatrica': {
++            title: 'Cirugía Bariátrica con Bono PAD 2026 | Manga y Bypass',
++            description: 'Guía sobre cirugía bariátrica con Bono PAD 2026: manga gástrica, bypass gástrico, requisitos, copagos, seguimiento y criterios de acceso.'
++          },
++          '/abdominoplastia-bono-pad': {
++            title: 'Abdominoplastía con Bono PAD 2026 | Abdomen Flácido',
++            description: 'Información sobre Bono PAD para abdomen flácido y abdominoplastía: requisitos, copago 2026, criterios de exclusión y orientación para pacientes Fonasa.'
++          }
++        };
++        const data = routes[path];
++        if (data) {
++          document.title = data.title;
++          const description = document.querySelector('meta[name="description"]');
++          if (description) description.setAttribute('content', data.description);
++          const canonical = document.querySelector('link[rel="canonical"]');
++          if (canonical) canonical.setAttribute('href', 'https://fonasapad.cl' + (path === '/' ? '/' : path));
++        }
++      })();
++    </script>
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+Only in /mnt/data/fonasapadcl-seo-v1/public: 404.html
+Only in /mnt/data/fonasapadcl-seo-v1/public: _headers
+diff -ru '--exclude=node_modules' '--exclude=SEO_CHANGES.diff' /mnt/data/fonasapadcl-main/public/_redirects /mnt/data/fonasapadcl-seo-v1/public/_redirects
+--- /mnt/data/fonasapadcl-main/public/_redirects	2026-03-08 22:22:14.000000000 +0000
++++ /mnt/data/fonasapadcl-seo-v1/public/_redirects	2026-09-05 22:10:08.082870690 +0000
+@@ -1 +1,5 @@
+-/*    /index.html   200
++/cirugia-metabolica                 /abdominoplastia-bono-pad 301
++/cirugia-bariatrica                 /index.html 200
++/abdominoplastia-bono-pad           /index.html 200
++/                                    /index.html 200
++/*                                   /404.html 404
+Only in /mnt/data/fonasapadcl-seo-v1/public: robots.txt
+Only in /mnt/data/fonasapadcl-seo-v1/public: sitemap.xml
+diff -ru '--exclude=node_modules' '--exclude=SEO_CHANGES.diff' /mnt/data/fonasapadcl-main/src/App.tsx /mnt/data/fonasapadcl-seo-v1/src/App.tsx
+--- /mnt/data/fonasapadcl-main/src/App.tsx	2026-03-08 22:22:14.000000000 +0000
++++ /mnt/data/fonasapadcl-seo-v1/src/App.tsx	2026-09-05 22:10:56.470023866 +0000
+@@ -11,12 +11,27 @@
+ import Footer from './components/layout/Footer';
+ import WhatsAppButton from './components/ui/WhatsAppButton';
+ import BariatricSurgery from './pages/BariatricSurgery';
+-import MetabolicSurgery from './pages/Abdominoplasty';
++import Abdominoplasty from './pages/Abdominoplasty';
+ import FAQ from './components/sections/FAQ';
+ import GoogleReviews from './components/sections/GoogleReviews';
++import SeoHead from './components/seo/SeoHead';
++import NotFound from './pages/NotFound';
++
++const siteSchema = {
++  '@context': 'https://schema.org',
++  '@type': 'WebSite',
++  name: 'FONASAPAD.cl',
++  url: 'https://fonasapad.cl/',
++  inLanguage: 'es-CL',
++  publisher: {
++    '@type': 'Organization',
++    name: 'Clínyco',
++    url: 'https://clinyco.cl/',
++  },
++};
+ 
+ function App() {
+-  const path = window.location.pathname;
++  const path = window.location.pathname.replace(/\/$/, '') || '/';
+ 
+   useEffect(() => {
+     if (path === '/') {
+@@ -33,8 +48,70 @@
+     }
+   }, [path]);
+ 
++  const isKnownRoute = ['/', '/cirugia-bariatrica', '/abdominoplastia-bono-pad'].includes(path);
++
+   return (
+     <div className="font-sans text-gray-100">
++      {path === '/' && (
++        <SeoHead
++          title="Bono PAD Cirugía Bariátrica 2026 | FONASAPAD.cl"
++          description="Información privada sobre Bono PAD 2026 para manga gástrica y bypass gástrico: requisitos, copagos, criterios de acceso y orientación clínica."
++          canonicalPath="/"
++          jsonLd={siteSchema}
++        />
++      )}
++
++      {path === '/cirugia-bariatrica' && (
++        <SeoHead
++          title="Cirugía Bariátrica con Bono PAD 2026 | Manga y Bypass"
++          description="Guía sobre cirugía bariátrica con Bono PAD 2026: manga gástrica, bypass gástrico, requisitos, copagos, seguimiento y criterios de acceso."
++          canonicalPath="/cirugia-bariatrica"
++          jsonLd={[
++            siteSchema,
++            {
++              '@context': 'https://schema.org',
++              '@type': 'MedicalWebPage',
++              name: 'Cirugía Bariátrica con Bono PAD 2026',
++              url: 'https://fonasapad.cl/cirugia-bariatrica',
++              inLanguage: 'es-CL',
++              about: [
++                { '@type': 'MedicalProcedure', name: 'Manga gástrica' },
++                { '@type': 'MedicalProcedure', name: 'Bypass gástrico' },
++              ],
++              publisher: { '@type': 'Organization', name: 'Clínyco', url: 'https://clinyco.cl/' },
++            },
++          ]}
++        />
++      )}
++
++      {path === '/abdominoplastia-bono-pad' && (
++        <SeoHead
++          title="Abdominoplastía con Bono PAD 2026 | Abdomen Flácido"
++          description="Información sobre Bono PAD para abdomen flácido y abdominoplastía: requisitos, copago 2026, criterios de exclusión y orientación para pacientes Fonasa."
++          canonicalPath="/abdominoplastia-bono-pad"
++          jsonLd={[
++            siteSchema,
++            {
++              '@context': 'https://schema.org',
++              '@type': 'MedicalWebPage',
++              name: 'Abdominoplastía con Bono PAD 2026',
++              url: 'https://fonasapad.cl/abdominoplastia-bono-pad',
++              inLanguage: 'es-CL',
++              about: { '@type': 'MedicalProcedure', name: 'Abdominoplastía' },
++              publisher: { '@type': 'Organization', name: 'Clínyco', url: 'https://clinyco.cl/' },
++            },
++          ]}
++        />
++      )}
++
++      {!isKnownRoute && (
++        <SeoHead
++          title="Página no encontrada | FONASAPAD.cl"
++          description="La página solicitada no existe o fue movida."
++          canonicalPath={path}
++        />
++      )}
++
+       <Header />
+       <main>
+         {path === '/' && (
+@@ -44,6 +121,7 @@
+             <BmiCalculator />
+             <Pricing />
+             <AboutPad />
++            <SurgeryTypes />
+             <Locations />
+             <Team />
+             <FAQ />
+@@ -51,7 +129,8 @@
+           </>
+         )}
+         {path === '/cirugia-bariatrica' && <BariatricSurgery />}
+-        {path === '/cirugia-metabolica' && <MetabolicSurgery />}
++        {path === '/abdominoplastia-bono-pad' && <Abdominoplasty />}
++        {!isKnownRoute && <NotFound />}
+       </main>
+       <Footer />
+       <WhatsAppButton />
+diff -ru '--exclude=node_modules' '--exclude=SEO_CHANGES.diff' /mnt/data/fonasapadcl-main/src/components/layout/Footer.tsx /mnt/data/fonasapadcl-seo-v1/src/components/layout/Footer.tsx
+--- /mnt/data/fonasapadcl-main/src/components/layout/Footer.tsx	2026-03-08 22:22:14.000000000 +0000
++++ /mnt/data/fonasapadcl-seo-v1/src/components/layout/Footer.tsx	2026-09-05 22:13:40.588281409 +0000
+@@ -24,7 +24,7 @@
+   </div>
+ </a>
+             <p className="text-gray-300 mb-4">
+-              Soluciones en salud con cobertura total, respaldo profesional y humano.
++              Información y orientación sobre prestaciones con Bono PAD y atención privada en convenio.
+             </p>
+             <div className="flex space-x-4">
+               <a 
+@@ -63,15 +63,17 @@
+           <div>
+             <h4 className="text-lg font-semibold mb-4">Enlaces Rápidos</h4>
+             <ul className="space-y-2">
+-              <li><a href="#" className="text-gray-300 hover:text-accent transition-colors">Inicio</a></li>
+-              <li><a href="#about-pad" className="text-gray-300 hover:text-accent transition-colors">Bono PAD</a></li>
+-              <li><a href="#surgery-types" className="text-gray-300 hover:text-accent transition-colors">Tipos de Cirugía</a></li>
+-              <li><a href="#locations" className="text-gray-300 hover:text-accent transition-colors">Ubicaciones</a></li>
++              <li><a href="/" className="text-gray-300 hover:text-accent transition-colors">Inicio</a></li>
++              <li><a href="/#about-pad" className="text-gray-300 hover:text-accent transition-colors">Bono PAD</a></li>
++              <li><a href="/#surgery-types" className="text-gray-300 hover:text-accent transition-colors">Tipos de Cirugía</a></li>
++              <li><a href="/#locations" className="text-gray-300 hover:text-accent transition-colors">Ubicaciones</a></li>
+             </ul>
+           </div>
+         </div>
+         
+         <div className="border-t border-primary-800 pt-6 text-center text-gray-400 text-sm">
++          <p className="mb-2"><strong>FONASAPAD.cl es un portal informativo privado.</strong> No es un sitio oficial de FONASA ni representa al Fondo Nacional de Salud.</p>
++          <p className="mb-2">Los requisitos, coberturas y aranceles pueden cambiar. Confirma siempre la información vigente con FONASA y con el prestador en convenio antes de comprar un bono.</p>
+           <p>© {currentYear} Clínyco. Todos los derechos reservados.</p>
+         </div>
+       </div>
+diff -ru '--exclude=node_modules' '--exclude=SEO_CHANGES.diff' /mnt/data/fonasapadcl-main/src/components/layout/Header.tsx /mnt/data/fonasapadcl-seo-v1/src/components/layout/Header.tsx
+--- /mnt/data/fonasapadcl-main/src/components/layout/Header.tsx	2026-03-08 22:22:14.000000000 +0000
++++ /mnt/data/fonasapadcl-seo-v1/src/components/layout/Header.tsx	2026-09-05 22:10:29.466171048 +0000
+@@ -33,7 +33,7 @@
+         <nav className="hidden md:flex space-x-6">
+           <a href="/" className="nav-link">Inicio</a>
+           <a href="/cirugia-bariatrica" className="nav-link">Cirugía Bariátrica</a>
+-          <a href="/cirugia-metabolica" className="nav-link">Cirugía Abdominoplastía</a>
++          <a href="/abdominoplastia-bono-pad" className="nav-link">Abdominoplastía Bono PAD</a>
+           <a href="/#about-pad" className="nav-link">Bono PAD</a>
+           <a href="/#contact" className="nav-link">Contacto</a>
+           <a href="/#locations" className="nav-link">Ubicación</a>
+@@ -67,11 +67,11 @@
+               Cirugía Bariátrica
+             </a>
+             <a 
+-              href="/cirugia-metabolica" 
++              href="/abdominoplastia-bono-pad" 
+               className="block py-2 px-4 hover:bg-primary-800 rounded"
+               onClick={() => setIsMobileMenuOpen(false)}
+             >
+-              Cirugía Abdominoplastía
++              Abdominoplastía Bono PAD
+             </a>
+             <a 
+               href="/#about-pad" 
+diff -ru '--exclude=node_modules' '--exclude=SEO_CHANGES.diff' /mnt/data/fonasapadcl-main/src/components/sections/AboutPad.tsx /mnt/data/fonasapadcl-seo-v1/src/components/sections/AboutPad.tsx
+--- /mnt/data/fonasapadcl-main/src/components/sections/AboutPad.tsx	2026-03-08 22:22:14.000000000 +0000
++++ /mnt/data/fonasapadcl-seo-v1/src/components/sections/AboutPad.tsx	2026-09-05 22:10:29.466342717 +0000
+@@ -19,7 +19,7 @@
+               </div>
+               <div>
+                 <h4 className="text-lg font-semibold mb-2">Cobertura integral</h4>
+-                <p className="text-gray-300">Incluye consultas, exámenes, procedimientos, cirugía y controles posteriores.</p>
++                <p className="text-gray-300">Cada PAD define un paquete de prestaciones incluidas. En cirugía bariátrica, la cobertura contempla la cirugía y el seguimiento establecido por la normativa vigente.</p>
+               </div>
+             </div>
+             
+@@ -29,7 +29,7 @@
+               </div>
+               <div>
+                 <h4 className="text-lg font-semibold mb-2">Tiempo definido</h4>
+-                <p className="text-gray-300">La atención tiene un plazo definido desde el diagnóstico hasta la resolución.</p>
++                <p className="text-gray-300">La cobertura y el seguimiento se rigen por las condiciones específicas de cada prestación PAD.</p>
+               </div>
+             </div>
+             
+@@ -39,7 +39,7 @@
+               </div>
+               <div>
+                 <h4 className="text-lg font-semibold mb-2">Costo conocido</h4>
+-                <p className="text-gray-300">Sabes exactamente cuánto pagarás, sin sorpresas ni cobros adicionales.</p>
++                <p className="text-gray-300">El PAD permite conocer previamente el valor de la prestación y el copago informado para el beneficiario.</p>
+               </div>
+             </div>
+             
+@@ -48,8 +48,8 @@
+                 <HeartPulse className="text-accent" size={24} />
+               </div>
+               <div>
+-                <h4 className="text-lg font-semibold mb-2">Calidad garantizada</h4>
+-                <p className="text-gray-300">Atención en centros acreditados con estándares de calidad y seguridad.</p>
++                <h4 className="text-lg font-semibold mb-2">Prestadores en convenio</h4>
++                <p className="text-gray-300">La prestación debe realizarse con prestadores e instituciones habilitados para el PAD correspondiente.</p>
+               </div>
+             </div>
+           </div>
+diff -ru '--exclude=node_modules' '--exclude=SEO_CHANGES.diff' /mnt/data/fonasapadcl-main/src/components/sections/FAQ.tsx /mnt/data/fonasapadcl-seo-v1/src/components/sections/FAQ.tsx
+--- /mnt/data/fonasapadcl-main/src/components/sections/FAQ.tsx	2026-03-08 22:22:14.000000000 +0000
++++ /mnt/data/fonasapadcl-seo-v1/src/components/sections/FAQ.tsx	2026-09-05 22:11:19.529340743 +0000
+@@ -1,41 +1,45 @@
+-import React from 'react';
+-
+-const FAQ = () => {
+-  return (
+-     <section className="pt-16 pb-5 min-h-screen bg-primary-900 text-white">
+-      <div className="container-custom max-w-5xl">
+-              <h3 className="text-2xl font-semibold mb-6">Preguntas Frecuentes</h3>
+-              <div className="space-y-4">
+-                <details className="bg-primary-800 rounded-lg p-5 shadow-md">
+-                  <summary className="cursor-pointer font-semibold text-white">¿Cuánto cuesta o "sale" el bono PAD para cirugía bariátrica?</summary>
+-                  <p className="mt-3 text-gray-300">El valor del bono depende del procedimiento: Bypass gástrico cuesta $5.737.280 con copago de $2.868.640; la manga gástrica tiene un valor de $5.224.540 con copago de $2.612.270.</p>
+-                </details>
+-                <details className="bg-primary-800 rounded-lg p-5 shadow-md">
+-                  <summary className="cursor-pointer font-semibold text-white">¿Cómo acceder al bono PAD para cirugía bariátrica?</summary>
+-                  <p className="mt-3 text-gray-300">Requiere presentación de un informe médico que indique que cumples con los requisitos establecidos por Fonasa. Esto lo entrega el equipo multidisciplinario tras evaluación.</p>
+-                </details>
+-                <details className="bg-primary-800 rounded-lg p-5 shadow-md">
+-                  <summary className="cursor-pointer font-semibold text-white">¿Qué se necesita para comprar el bono PAD cirugía bariátrica?</summary>
+-                  <p className="mt-3 text-gray-300">Debes ir a una sucursal de Fonasa con tu orden médica, pagar el valor del bono y, si corresponde, solicitar el préstamo médico que cubre el 85% del copago.</p>
+-                </details>
+-                <details className="bg-primary-800 rounded-lg p-5 shadow-md">
+-                  <summary className="cursor-pointer font-semibold text-white">¿El bono PAD cirugía bariátrica se puede pagar en cuotas?</summary>
+-                  <p className="mt-3 text-gray-300">Sí, si solicitas el préstamo Fonasa. Este cubre el 85% del valor del bono y el 15% se paga al contado. El resto en cuotas que no superen el 10% de tus ingresos.</p>
+-                </details>
+-              </div>
+-              {/* CTA final */}
+-          <div className="text-center pt-16 pb-1">
+-            <a href="https://calendly.com/clinycosalud/evaluacion-nutricional-bariatrica-online" className="btn btn-primary text-lg px-8 py-4 shadow-lg">
+-                  Agenda Evaluacion SIN COSTO de Nutricionista Bariátrica.</a>
+-          </div>
+-          <div className="text-center pt-16 pb-1">
+-            <a href="https://wa.me/56953386191?text=hola+me+interesa+saber+si+fonasa+pad+cubre+mi+cirugia+bariatrica+y+me+interesa+la+evaluacion+sin+costo+de+nutricionista" className="btn btn-primary text-lg px-8 py-4 shadow-lg">
+-                  ¿FONASA PAD cubrirá mi cirugía?</a>
+-          </div>
+-            </div>
+-          </section>
+-
+-  );
+-};
+-
+-export default FAQ;
+\ No newline at end of file
++import React from 'react';
++import { FONASA_YEAR, bariatricPad, formatCLP } from '../../data/fonasa2026';
++
++const FAQ = () => {
++  return (
++    <section className="pt-16 pb-5 bg-primary-900 text-white">
++      <div className="container-custom max-w-5xl">
++        <h2 className="text-3xl font-semibold mb-6">Preguntas Frecuentes sobre Bono PAD</h2>
++        <div className="space-y-4">
++          <details className="bg-primary-800 rounded-lg p-5 shadow-md">
++            <summary className="cursor-pointer font-semibold text-white">¿Cuánto cuesta el Bono PAD para cirugía bariátrica en {FONASA_YEAR}?</summary>
++            <p className="mt-3 text-gray-300">
++              El copago publicado para bypass gástrico (código {bariatricPad.bypass.code}) es {formatCLP(bariatricPad.bypass.copay)} y para manga gástrica (código {bariatricPad.sleeve.code}) es {formatCLP(bariatricPad.sleeve.copay)}. Verifica siempre el valor vigente antes de comprar el bono.
++            </p>
++          </details>
++          <details className="bg-primary-800 rounded-lg p-5 shadow-md">
++            <summary className="cursor-pointer font-semibold text-white">¿Cómo acceder al Bono PAD para cirugía bariátrica?</summary>
++            <p className="mt-3 text-gray-300">Debes cumplir los criterios clínicos y administrativos de Fonasa, contar con la evaluación requerida y realizar la prestación con una institución habilitada para el PAD correspondiente.</p>
++          </details>
++          <details className="bg-primary-800 rounded-lg p-5 shadow-md">
++            <summary className="cursor-pointer font-semibold text-white">¿Qué se necesita para comprar el Bono PAD de cirugía bariátrica?</summary>
++            <p className="mt-3 text-gray-300">La documentación exigida puede incluir orden médica y antecedentes clínicos del programa bariátrico. Confirma los requisitos vigentes directamente con Fonasa y con el prestador antes de emitir el bono.</p>
++          </details>
++          <details className="bg-primary-800 rounded-lg p-5 shadow-md">
++            <summary className="cursor-pointer font-semibold text-white">¿El Bono PAD de cirugía bariátrica se puede financiar?</summary>
++            <p className="mt-3 text-gray-300">Fonasa contempla mecanismos de préstamo médico en determinadas condiciones. La elegibilidad, porcentaje financiado y modalidad de pago deben verificarse al momento de la solicitud.</p>
++          </details>
++        </div>
++
++        <div className="text-center pt-12 pb-1">
++          <a href="https://calendly.com/clinycosalud/evaluacion-nutricional-bariatrica-online" className="btn btn-primary text-lg px-8 py-4 shadow-lg">
++            Agenda evaluación nutricional
++          </a>
++        </div>
++        <div className="text-center pt-6 pb-1">
++          <a href="https://wa.me/56953386191?text=hola+me+interesa+saber+si+fonasa+pad+cubre+mi+cirugia+bariatrica" className="btn btn-primary text-lg px-8 py-4 shadow-lg">
++            Consultar por Bono PAD
++          </a>
++        </div>
++      </div>
++    </section>
++  );
++};
++
++export default FAQ;
+diff -ru '--exclude=node_modules' '--exclude=SEO_CHANGES.diff' /mnt/data/fonasapadcl-main/src/components/sections/Hero.tsx /mnt/data/fonasapadcl-seo-v1/src/components/sections/Hero.tsx
+--- /mnt/data/fonasapadcl-main/src/components/sections/Hero.tsx	2026-03-08 22:22:14.000000000 +0000
++++ /mnt/data/fonasapadcl-seo-v1/src/components/sections/Hero.tsx	2026-09-05 22:10:29.466296467 +0000
+@@ -9,7 +9,7 @@
+             Accede a tu Cirugía con <span className="text-accent">FONASA PAD</span>
+           </h1>
+           <p className="text-xl md:text-2xl text-gray-300 mb-10 animate-slide-up">
+-            Soluciones en salud con cobertura total, respaldo profesional y humano
++            Información y orientación para acceder a prestaciones con Bono PAD, evaluación profesional y acompañamiento clínico
+           </p>
+           <p className="text-l md:text-2xl mb-10 animate-slide-up text-accent">
+             Santiago - Antofagasta - Calama
+diff -ru '--exclude=node_modules' '--exclude=SEO_CHANGES.diff' /mnt/data/fonasapadcl-main/src/components/sections/Pricing.tsx /mnt/data/fonasapadcl-seo-v1/src/components/sections/Pricing.tsx
+--- /mnt/data/fonasapadcl-main/src/components/sections/Pricing.tsx	2026-03-08 22:22:14.000000000 +0000
++++ /mnt/data/fonasapadcl-seo-v1/src/components/sections/Pricing.tsx	2026-09-05 22:11:19.526636409 +0000
+@@ -1,55 +1,61 @@
+ import React from 'react';
++import { FONASA_YEAR, bariatricPad, formatCLP } from '../../data/fonasa2026';
+ 
+ const Pricing = () => {
+   return (
+     <section className="section bg-primary-900 py-16">
+       <div className="container-custom max-w-6xl">
+-        <h2 className="text-3xl md:text-4xl font-semibold mb-12 text-center text-accent">
+-          Aranceles 2025 FONASA PAD
++        <h2 className="text-3xl md:text-4xl font-semibold mb-4 text-center text-accent">
++          Aranceles {FONASA_YEAR} FONASA PAD
+         </h2>
++        <p className="text-center text-gray-300 mb-12">
++          Valores del arancel MLE/PAD vigentes para los códigos de cirugía bariátrica indicados. Confirma siempre la vigencia antes de comprar el bono.
++        </p>
+ 
+         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+-          {/* Bypass Card */}
+           <div className="bg-pink-600 text-white rounded-2xl p-6 shadow-lg flex flex-col justify-between h-full">
+             <div>
+               <div className="flex items-center mb-4">
+                 <img
+                   src="/assets/bypass-icon.png"
+-                  alt="Ícono Bypass Gástrico"
++                  alt="Ícono de bypass gástrico"
+                   className="w-20 h-20 mr-3"
++                  loading="lazy"
+                 />
+                 <h3 className="text-2xl font-bold uppercase">Bypass Gástrico</h3>
+               </div>
+               <p className="text-sm leading-relaxed">
+-                Consiste en reducir el tamaño del estómago y modificar el intestino, de manera que los alimentos se “salten” aproximadamente 1,5 metros de este, y disminuya su capacidad de absorción.
++                Procedimiento que crea un reservorio gástrico pequeño y una derivación intestinal. La indicación depende de la evaluación clínica individual.
+               </p>
++              <p className="text-xs mt-3 opacity-90">Código PAD: {bariatricPad.bypass.code}</p>
+             </div>
+             <div className="mt-6 bg-pink-400/30 rounded-xl p-4 text-center">
+-              <div className="text-lg font-semibold">Valor a pagar por el paciente</div>
+-              <div className="text-3xl font-bold mt-2">$2.496.690</div>
+-              <div className="mt-1 text-sm font-medium">Valor Bono PAD</div>
++              <div className="text-lg font-semibold">Copago del paciente</div>
++              <div className="text-3xl font-bold mt-2">{formatCLP(bariatricPad.bypass.copay)}</div>
++              <div className="mt-1 text-sm font-medium">Arancel total: {formatCLP(bariatricPad.bypass.total)}</div>
+             </div>
+           </div>
+ 
+-          {/* Manga Card */}
+           <div className="bg-pink-600 text-white rounded-2xl p-6 shadow-lg flex flex-col justify-between h-full">
+             <div>
+               <div className="flex items-center mb-4">
+                 <img
+                   src="/assets/sleeve-icon.png"
+-                  alt="Ícono Manga Gástrica"
++                  alt="Ícono de manga gástrica"
+                   className="w-20 h-20 mr-3"
++                  loading="lazy"
+                 />
+                 <h3 className="text-2xl font-bold uppercase">Manga Gástrica</h3>
+               </div>
+               <p className="text-sm leading-relaxed">
+-                Consiste en sacar (resecar) aproximadamente un 80% del estómago y dejarlo de forma tubular, con una capacidad entre 100–200cc (una taza de té).
++                Procedimiento que reduce el volumen gástrico mediante una resección longitudinal. La indicación depende de la evaluación clínica individual.
+               </p>
++              <p className="text-xs mt-3 opacity-90">Código PAD: {bariatricPad.sleeve.code}</p>
+             </div>
+             <div className="mt-6 bg-pink-400/30 rounded-xl p-4 text-center">
+-              <div className="text-lg font-semibold">Valor a pagar por el paciente</div>
+-              <div className="text-3xl font-bold mt-2">$2.333.850</div>
+-              <div className="mt-1 text-sm font-medium">Valor Bono PAD</div>
++              <div className="text-lg font-semibold">Copago del paciente</div>
++              <div className="text-3xl font-bold mt-2">{formatCLP(bariatricPad.sleeve.copay)}</div>
++              <div className="mt-1 text-sm font-medium">Arancel total: {formatCLP(bariatricPad.sleeve.total)}</div>
+             </div>
+           </div>
+         </div>
+diff -ru '--exclude=node_modules' '--exclude=SEO_CHANGES.diff' /mnt/data/fonasapadcl-main/src/components/sections/SurgeryTypes.tsx /mnt/data/fonasapadcl-seo-v1/src/components/sections/SurgeryTypes.tsx
+--- /mnt/data/fonasapadcl-main/src/components/sections/SurgeryTypes.tsx	2026-03-08 22:22:14.000000000 +0000
++++ /mnt/data/fonasapadcl-seo-v1/src/components/sections/SurgeryTypes.tsx	2026-09-05 22:10:29.466623161 +0000
+@@ -12,10 +12,10 @@
+             title="Manga Gástrica"
+             description="Procedimiento quirúrgico que reduce el tamaño del estómago, limitando la ingesta de alimentos y generando cambios hormonales que disminuyen el apetito."
+             benefits={[
+-              "Pérdida de peso significativa y sostenida",
+-              "Mejora de condiciones médicas asociadas",
++              "Puede favorecer una pérdida de peso clínicamente relevante",
++              "Puede mejorar comorbilidades asociadas a la obesidad",
+               "Recuperación relativamente rápida",
+-              "No altera la absorción de nutrientes"
++              "Requiere seguimiento nutricional y médico"
+             ]}
+             iconType="manga"
+           />
+@@ -24,9 +24,9 @@
+             title="Bypass Gástrico"
+             description="Procedimiento que reduce el tamaño del estómago y altera el proceso digestivo, limitando la absorción de calorías y nutrientes."
+             benefits={[
+-              "Mayor pérdida de peso a largo plazo",
+-              "Efectivo para diabetes tipo 2",
+-              "Menor probabilidad de recuperar peso",
++              "Puede lograr una pérdida de peso importante a largo plazo",
++              "Puede contribuir al control o remisión de diabetes tipo 2",
++              "Puede ser una alternativa en casos seleccionados de reflujo o cirugía revisional",
+               "Resultados duraderos con seguimiento adecuado"
+             ]}
+             iconType="bypass"
+diff -ru '--exclude=node_modules' '--exclude=SEO_CHANGES.diff' /mnt/data/fonasapadcl-main/src/components/sections/Team.tsx /mnt/data/fonasapadcl-seo-v1/src/components/sections/Team.tsx
+--- /mnt/data/fonasapadcl-main/src/components/sections/Team.tsx	2026-03-08 22:22:14.000000000 +0000
++++ /mnt/data/fonasapadcl-seo-v1/src/components/sections/Team.tsx	2026-09-05 22:13:05.498641474 +0000
+@@ -6,37 +6,33 @@
+     {
+       name: "Dr. Ramón Díaz",
+       role: "Cirujano Bariátrico",
+-      imageUrl: "../assets/Ramon Diaz.webp"
++      imageUrl: "/assets/Ramon Diaz.webp"
+     },
+     {
+       name: "Dr. Nelson Aros",
+       role: "Cirujano Bariátrico",
+-      imageUrl: "../assets/Nelson Aros.webp"
++      imageUrl: "/assets/nelson aros.webp"
+     },
+     {
+-      name: "Dr. Rodrigo Villagrán",
+-      role: "Cirujano Bariátrico",
+-      imageUrl: "../assets/Rodrigo Villagran.webp"
++      name: "Dr. Rodrigo Villagrán Morales",
++      role: "Cirugía bariátrica y metabólica",
++      imageUrl: "/assets/rodrigo villagran.webp",
++      profileUrl: "https://clinyco.cl/doctor-rodrigo-villagran/"
+     },
+      {
+       name: "Dr. Alberto Sirabo",
+       role: "Cirujano Bariátrico",
+-      imageUrl: "../assets/Alberto Sirabo.webp"
++      imageUrl: "/Alberto Sirabo.webp"
+     },
+     {
+       name: "Dr. Cristobal Guixé",
+       role: "Cirujano Bariátrico",
+-      imageUrl: "../assets/Cristobal Guixe.webp"
+-    },
+-    {
+-      name: "",
+-      role: "Cirujano Bariátrico",
+-      imageUrl: ""
++      imageUrl: "/assets/Cristobal Guixe.webp"
+     },
+     {
+       name: "Dr. Andrés San Martín",
+       role: "Cirujano Bariátrico",
+-      imageUrl: "../assets/Andres San Martin.webp"
++      imageUrl: "/assets/Andres San Martin.webp"
+     }
+   ];
+ 
+@@ -52,6 +48,7 @@
+               name={member.name}
+               role={member.role}
+               imageUrl={member.imageUrl}
++              profileUrl={'profileUrl' in member ? member.profileUrl : undefined}
+             />
+           ))}
+         </div>
+Only in /mnt/data/fonasapadcl-seo-v1/src/components: seo
+diff -ru '--exclude=node_modules' '--exclude=SEO_CHANGES.diff' /mnt/data/fonasapadcl-main/src/components/ui/LocationCard.tsx /mnt/data/fonasapadcl-seo-v1/src/components/ui/LocationCard.tsx
+--- /mnt/data/fonasapadcl-main/src/components/ui/LocationCard.tsx	2026-03-08 22:22:14.000000000 +0000
++++ /mnt/data/fonasapadcl-seo-v1/src/components/ui/LocationCard.tsx	2026-09-05 22:10:29.466424391 +0000
+@@ -33,7 +33,7 @@
+       
+       <div className="flex items-center">
+         <Phone size={18} className="text-accent mr-2" />
+-        <p>+56 2 2222 3333</p>
++        <p>+56 2 2840 0740</p>
+       </div>
+       
+       <div className="mt-4 pt-4 border-t border-primary-800">
+diff -ru '--exclude=node_modules' '--exclude=SEO_CHANGES.diff' /mnt/data/fonasapadcl-main/src/components/ui/TeamMember.tsx /mnt/data/fonasapadcl-seo-v1/src/components/ui/TeamMember.tsx
+--- /mnt/data/fonasapadcl-main/src/components/ui/TeamMember.tsx	2026-03-08 22:22:14.000000000 +0000
++++ /mnt/data/fonasapadcl-seo-v1/src/components/ui/TeamMember.tsx	2026-09-05 22:13:05.061477504 +0000
+@@ -4,23 +4,33 @@
+   name: string;
+   role: string;
+   imageUrl: string;
++  profileUrl?: string;
+ }
+ 
+-const TeamMember: React.FC<TeamMemberProps> = ({ name, role, imageUrl }) => {
+-  return (
+-    <div className="card hover:shadow-xl group">
++const TeamMember: React.FC<TeamMemberProps> = ({ name, role, imageUrl, profileUrl }) => {
++  const content = (
++    <>
+       <div className="relative mb-4 overflow-hidden rounded-lg h-64 bg-white">
+         <img
+           src={imageUrl}
+           alt={name}
+-          className="w-70 h-70 object-cover object-center group-hover:scale-105 transition-transform duration-500"
++          loading="lazy"
++          className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
+         />
+       </div>
+-      
+       <h3 className="text-xl font-semibold">{name}</h3>
+       <p className="text-accent">{role}</p>
+-    </div>
++      {profileUrl && <p className="text-sm text-gray-300 mt-2">Ver perfil profesional →</p>}
++    </>
++  );
++
++  return profileUrl ? (
++    <a href={profileUrl} className="card hover:shadow-xl group block" rel="author">
++      {content}
++    </a>
++  ) : (
++    <div className="card hover:shadow-xl group">{content}</div>
+   );
+ };
+ 
+-export default TeamMember
+\ No newline at end of file
++export default TeamMember;
+Only in /mnt/data/fonasapadcl-seo-v1/src: data
+diff -ru '--exclude=node_modules' '--exclude=SEO_CHANGES.diff' /mnt/data/fonasapadcl-main/src/pages/Abdominoplasty.tsx /mnt/data/fonasapadcl-seo-v1/src/pages/Abdominoplasty.tsx
+--- /mnt/data/fonasapadcl-main/src/pages/Abdominoplasty.tsx	2026-03-08 22:22:14.000000000 +0000
++++ /mnt/data/fonasapadcl-seo-v1/src/pages/Abdominoplasty.tsx	2026-09-05 22:12:53.464610904 +0000
+@@ -1,4 +1,5 @@
+ import React from 'react';
++import { FONASA_YEAR, abdominoplastyPad, formatCLP } from '../data/fonasa2026';
+ 
+ const Abdominoplasty = () => {
+   return (
+@@ -7,18 +8,18 @@
+         <div className="flex flex-col md:flex-row items-center md:items-start gap-6 mb-10 py-20">
+           <img src="/assets/abdomenicon.png" alt="Abdominoplastía"  className="w-24 h-24 md:w-32 md:h-32 filter brightness-0 invert" />
+           <div>
+-            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-accent">
+-              ¿Qué es la Abdominoplastía con Bono PAD?
+-            </h2>
++            <h1 className="text-3xl md:text-4xl font-bold mb-4 text-accent">
++              Abdominoplastía con Bono PAD {FONASA_YEAR}: abdomen flácido
++            </h1>
+             <p className="text-gray-200 leading-relaxed">
+-              La <strong>abdominoplastía</strong> es una <strong>cirugía reconstructiva</strong> indicada para personas que presentan <strong>abdomen flácido</strong>, también conocido como <strong>“guatita de delantal”</strong>. Gracias al <span className="text-blue-400 font-semibold">Bono PAD de Fonasa</span>, este procedimiento está cubierto parcialmente y permite acceder a medicina privada a un <strong>precio fijo, preestablecido y sin sorpresas</strong>.
++              La <strong>abdominoplastía</strong> es una <strong>cirugía reconstructiva</strong> indicada para personas que presentan <strong>abdomen flácido</strong>, también conocido como <strong>“guatita de delantal”</strong>. Gracias al <span className="text-blue-400 font-semibold">Bono PAD de Fonasa</span>, este procedimiento está cubierto parcialmente y permite acceder a una prestación con <strong>valor y copago definidos por el arancel PAD vigente</strong>.
+             </p>
+           </div>
+         </div>
+ 
+         <section className="mb-12 bg-blue-950/50 rounded-xl">
+           <p>
+-            Gracias al <strong>Bono PAD de Fonasa</strong>, este procedimiento está cubierto parcialmente, permitiendo acceder a medicina privada a un <strong>precio fijo, preestablecido y sin sorpresas</strong>.
++            Gracias al <strong>Bono PAD de Fonasa</strong>, este procedimiento está cubierto parcialmente, permitiendo conocer previamente el <strong>valor y copago informados para la prestación PAD</strong>.
+           </p>
+         </section>
+ 
+@@ -40,7 +41,7 @@
+         <section className="mb-12">
+           <h3 className="text-xl font-bold text-accent mb-4">¿Qué es el "abdomen flácido"?</h3>
+           <p className="mb-2">
+-            <strong>Código Fonasa: 2505950</strong><br />
++            <strong>Código Fonasa: {abdominoplastyPad.code}</strong><br />
+             “Abdomen flácido” es una condición médica en la que se presenta un exceso de grasa y piel en la parte inferior del abdomen, lo que provoca que esta zona pierda su firmeza y elasticidad, colgando sobre el pubis de forma similar a un delantal.
+           </p>
+           <p className="mb-2">Esta situación puede deberse a diversos factores como:</p>
+@@ -66,7 +67,7 @@
+         <section className="mb-12">
+           <h3 className="text-xl font-bold text-accent mb-4">Cobertura y beneficios</h3>
+           <ul className="list-disc list-inside space-y-2">
+-            <li>Valor fijo y transparente: sin costos adicionales ni sorpresas</li>
++            <li>Valor y copago informados previamente según el arancel PAD vigente</li>
+             <li>Incluye hospitalización, medicamentos y controles postoperatorios por 15 días</li>
+             <li>Cubre exámenes, insumos, equipo médico completo y pabellón</li>
+             <li>Atención en clínicas privadas con convenio Fonasa</li>
+@@ -75,9 +76,10 @@
+ 
+         <section className="mb-12">
+           <h3 className="text-xl font-bold text-accent mb-4">Valores Fonasa PAD</h3>
+-          <p><strong>Total:</strong> $3.583.580</p>
+-          <p><strong>Copago:</strong> $1.791.790</p>
+-          <p><strong>Préstamo 85%:</strong> $1.523.020</p>
++          <p><strong>Arancel total {FONASA_YEAR}:</strong> {formatCLP(abdominoplastyPad.total)}</p>
++          <p><strong>Copago:</strong> {formatCLP(abdominoplastyPad.copay)}</p>
++          <p><strong>Préstamo 85%:</strong> {formatCLP(abdominoplastyPad.loan85)}</p>
++          <p className="text-sm text-gray-300 mt-3">Confirma siempre la vigencia de valores y requisitos con Fonasa y con el prestador antes de emitir el bono.</p>
+         </section>
+ 
+         <section className="mb-12">
+diff -ru '--exclude=node_modules' '--exclude=SEO_CHANGES.diff' /mnt/data/fonasapadcl-main/src/pages/BariatricSurgery.tsx /mnt/data/fonasapadcl-seo-v1/src/pages/BariatricSurgery.tsx
+--- /mnt/data/fonasapadcl-main/src/pages/BariatricSurgery.tsx	2026-03-08 22:22:14.000000000 +0000
++++ /mnt/data/fonasapadcl-seo-v1/src/pages/BariatricSurgery.tsx	2026-09-05 22:11:37.141412870 +0000
+@@ -1,4 +1,5 @@
+ import React from 'react';
++import { FONASA_YEAR, bariatricPad, formatCLP } from '../data/fonasa2026';
+ interface ArancelCardProps {
+   title: string;
+   code: string;
+@@ -113,7 +114,7 @@
+             <div className="text-gray-300 space-y-4">
+               <p>Para acceder al bono PAD de cirugía bariátrica debes contar con un informe médico emitido por un especialista que confirme que cumples con los requisitos para someterte a manga gástrica o bypass gástrico.</p>
+               <p>Recomendamos ingresar a un programa contra la obesidad con equipo multidisciplinario (nutriólogo, nutricionista, psicólogo, kinesiólogo y cirujano). Ellos evaluarán tu caso y entregarán el pase médico.</p>
+-              <p>Luego, deberás verificar qué institución trabaja con Fonasa y agendar directamente con su cirujano. Con la orden médica y el código 2501058 se emite el bono PAD en una sucursal Fonasa. Si deseas, puedes solicitar el préstamo para cubrir el 85% del copago.</p>
++              <p>Luego, deberás verificar qué institución se encuentra habilitada para el PAD correspondiente y confirmar la documentación vigente. Los códigos son {bariatricPad.bypass.code} para bypass gástrico y {bariatricPad.sleeve.code} para manga gástrica.</p>
+             </div>
+           </section>
+           <section>
+@@ -189,25 +190,26 @@
+ 
+           {/* Aranceles */}
+           <section>
+-            <h3 className="text-2xl font-semibold mb-6">Aranceles 2025 FONASA PAD</h3>
++            <h3 className="text-2xl font-semibold mb-6">Aranceles {FONASA_YEAR} FONASA PAD</h3>
+             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+               <ArancelCard
+-                title="Manga Gástrica"
+-                code="2501059"
+-                total={4667700}
+-                copago={2333850}
+-                prestamo={1983770}
+-                pie={350078}
++                title={bariatricPad.sleeve.name}
++                code={bariatricPad.sleeve.code}
++                total={bariatricPad.sleeve.total}
++                copago={bariatricPad.sleeve.copay}
++                prestamo={bariatricPad.sleeve.loan85}
++                pie={bariatricPad.sleeve.downPayment15}
+               />
+               <ArancelCard
+-                title="Bypass Gástrico"
+-                code="2501058"
+-                total={4993380}
+-                copago={2496690}
+-                prestamo={2122190}
+-                pie={374504}
++                title={bariatricPad.bypass.name}
++                code={bariatricPad.bypass.code}
++                total={bariatricPad.bypass.total}
++                copago={bariatricPad.bypass.copay}
++                prestamo={bariatricPad.bypass.loan85}
++                pie={bariatricPad.bypass.downPayment15}
+               />
+             </div>
++            <p className="text-xs text-gray-400 mt-4">Valores referenciales del arancel PAD/MLE {FONASA_YEAR}. Verifica la vigencia directamente con Fonasa y con la institución en convenio antes de emitir el bono.</p>
+           </section>
+           
+           {/* Preguntas frecuentes */}
+@@ -216,19 +218,19 @@
+             <div className="space-y-4">
+               <details className="bg-primary-800 rounded p-4">
+                 <summary className="cursor-pointer font-semibold">¿Cuánto sale el bono PAD para cirugía bariátrica?</summary>
+-                <p className="mt-2 text-gray-300">El valor del bono depende del procedimiento: Bypass gástrico cuesta $5.737.280 con copago de $2.868.640; la manga gástrica tiene un valor de $5.224.540 con copago de $2.612.270.</p>
++                <p className="mt-2 text-gray-300">En {FONASA_YEAR}, el copago publicado para bypass gástrico es {formatCLP(bariatricPad.bypass.copay)} y para manga gástrica es {formatCLP(bariatricPad.sleeve.copay)}. Confirma siempre el valor vigente antes de comprar el bono.</p>
+               </details>
+               <details className="bg-primary-800 rounded p-4">
+                 <summary className="cursor-pointer font-semibold">¿Cómo acceder al bono PAD para cirugía bariátrica?</summary>
+-                <p className="mt-2 text-gray-300">Requiere presentación de un informe médico que indique que cumples con los requisitos establecidos por Fonasa. Esto lo entrega el equipo multidisciplinario tras evaluación.</p>
++                <p className="mt-2 text-gray-300">Debes cumplir los criterios clínicos y administrativos vigentes de Fonasa, contar con la evaluación requerida y realizar la prestación con un prestador habilitado para el PAD correspondiente.</p>
+               </details>
+               <details className="bg-primary-800 rounded p-4">
+                 <summary className="cursor-pointer font-semibold">¿Qué se necesita para comprar el bono PAD cirugía bariátrica?</summary>
+-                <p className="mt-2 text-gray-300">Debes ir a una sucursal de Fonasa con tu orden médica, pagar el valor del bono y, si corresponde, solicitar el préstamo médico que cubre el 85% del copago.</p>
++                <p className="mt-2 text-gray-300">La documentación exigida puede incluir orden médica y antecedentes clínicos del programa bariátrico. Confirma la documentación vigente directamente con Fonasa y con el prestador.</p>
+               </details>
+               <details className="bg-primary-800 rounded p-4">
+                 <summary className="cursor-pointer font-semibold">¿El bono PAD cirugía bariátrica se puede pagar en cuotas?</summary>
+-                <p className="mt-2 text-gray-300">Sí, si solicitas el préstamo Fonasa. Este cubre el 85% del valor del bono y el 15% se paga al contado. El resto en cuotas que no superen el 10% de tus ingresos.</p>
++                <p className="mt-2 text-gray-300">Fonasa contempla mecanismos de préstamo médico bajo determinadas condiciones. La elegibilidad, porcentaje financiado y modalidad de pago deben verificarse al momento de la solicitud.</p>
+               </details>
+             </div>
+           </section>
+Only in /mnt/data/fonasapadcl-seo-v1/src/pages: NotFound.tsx
